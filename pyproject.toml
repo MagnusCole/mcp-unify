@@ -3,7 +3,7 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "mcp-gateway"
+name = "mcp-unify"
 version = "0.1.0"
 description = "Unify multiple MCP servers behind a single endpoint with lazy loading, plugins, and role filtering."
 readme = "README.md"
