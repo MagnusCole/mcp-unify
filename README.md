@@ -1,8 +1,8 @@
-# mcp-gateway
+# mcp-unify
 
-[![PyPI](https://img.shields.io/pypi/v/mcp-gateway)](https://pypi.org/project/mcp-gateway/)
-[![License](https://img.shields.io/github/license/MagnusCole/mcp-gateway)](LICENSE)
-[![Python](https://img.shields.io/pypi/pyversions/mcp-gateway)](https://pypi.org/project/mcp-gateway/)
+[![PyPI](https://img.shields.io/pypi/v/mcp-unify)](https://pypi.org/project/mcp-unify/)
+[![License](https://img.shields.io/github/license/MagnusCole/mcp-unify)](LICENSE)
+[![Python](https://img.shields.io/pypi/pyversions/mcp-unify)](https://pypi.org/project/mcp-unify/)
 
 Unify multiple MCP servers behind a single endpoint. Lazy loading, auto-cleanup, Python plugins, role-based filtering.
 
@@ -16,13 +16,13 @@ If you use Claude Code or any MCP client with 3+ servers, you get:
 
 ## The Solution
 
-`mcp-gateway` runs **one process** that proxies N MCP servers on-demand:
+`mcp-unify` runs **one process** that proxies N MCP servers on-demand:
 
 ```
 Claude Code / MCP Client
   │
   ▼
-mcp-gateway (1 process)
+mcp-unify (1 process)
   ├─ [plugin] Python @tool functions     ← in-process, 0 overhead
   ├─ [lazy]   filesystem-server          ← subprocess spawned on first call
   ├─ [lazy]   github-server              ← subprocess spawned on first call
@@ -34,7 +34,7 @@ mcp-gateway (1 process)
 ## Install
 
 ```bash
-pip install mcp-gateway
+pip install mcp-unify
 ```
 
 ## Quick Start
@@ -61,12 +61,12 @@ idle_timeout: 300
 
 **stdio** (for Claude Code):
 ```bash
-mcp-gateway stdio --config gateway.yaml
+mcp-unify stdio --config gateway.yaml
 ```
 
 **SSE** (for remote clients):
 ```bash
-mcp-gateway serve --config gateway.yaml --port 8765
+mcp-unify serve --config gateway.yaml --port 8765
 ```
 
 ### 3. Add to Claude Code
@@ -75,7 +75,7 @@ mcp-gateway serve --config gateway.yaml --port 8765
 {
   "mcpServers": {
     "gateway": {
-      "command": "mcp-gateway",
+      "command": "mcp-unify",
       "args": ["stdio", "--config", "/path/to/gateway.yaml"]
     }
   }
@@ -127,7 +127,7 @@ roles:
 Set the role via environment variable:
 
 ```bash
-MCP_GATEWAY_ROLE=readonly mcp-gateway stdio
+MCP_GATEWAY_ROLE=readonly mcp-unify stdio
 ```
 
 Uses glob patterns — `filesystem_*` matches all tools from the filesystem server.
@@ -166,12 +166,12 @@ async with MCPGateway() as gw:
 ## CLI
 
 ```
-mcp-gateway serve [--config FILE] [--host HOST] [--port PORT]
-mcp-gateway stdio [--config FILE]
-mcp-gateway list  [--config FILE]
+mcp-unify serve [--config FILE] [--host HOST] [--port PORT]
+mcp-unify stdio [--config FILE]
+mcp-unify list  [--config FILE]
 ```
 
-Config discovery: `--config` > `./gateway.yaml` > `./mcp-gateway.yaml`
+Config discovery: `--config` > `./gateway.yaml` > `./mcp-unify.yaml`
 
 ## Requirements
 
