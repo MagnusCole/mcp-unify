@@ -3,7 +3,7 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "mcp-gateway"
+name = "mcp-unify"
 version = "0.2.0"
 description = "Unify multiple MCP servers behind a single endpoint with lazy loading, plugins, and role filtering."
 readme = "README.md"
@@ -36,11 +36,11 @@ dependencies = [
 mcp-gateway = "mcp_gateway.cli:main"
 
 [project.urls]
-Homepage = "https://github.com/MagnusCole/mcp-gateway"
-Repository = "https://github.com/MagnusCole/mcp-gateway"
-Issues = "https://github.com/MagnusCole/mcp-gateway/issues"
-Documentation = "https://github.com/MagnusCole/mcp-gateway#readme"
-Changelog = "https://github.com/MagnusCole/mcp-gateway/releases"
+Homepage = "https://github.com/MagnusCole/mcp-unify"
+Repository = "https://github.com/MagnusCole/mcp-unify"
+Issues = "https://github.com/MagnusCole/mcp-unify/issues"
+Documentation = "https://github.com/MagnusCole/mcp-unify#readme"
+Changelog = "https://github.com/MagnusCole/mcp-unify/releases"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/mcp_gateway"]
